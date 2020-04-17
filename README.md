@@ -10,9 +10,6 @@ git clone https://github.com/xryctdm/place-server.git
 ```
 Установите зависимости:
 ```
-npm init
-```
-```
 npm install
 ```
 
