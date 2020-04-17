@@ -1,5 +1,10 @@
 const router = require('express').Router();
-const users = require('../data/users.json');
+const path = require('path');
+
+const usersPath = path.resolve('../sprint_12/data/users.json');
+
+// eslint-disable-next-line import/no-dynamic-require
+const users = require(usersPath);
 
 router.get('/users', (req, res) => {
   res.send(users);

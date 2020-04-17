@@ -1,5 +1,10 @@
 const router = require('express').Router();
-const cards = require('../data/cards.json');
+const path = require('path');
+
+const cardsPath = path.resolve('../sprint_12/data/cards.json');
+
+// eslint-disable-next-line import/no-dynamic-require
+const cards = require(cardsPath);
 
 router.get('/cards', (req, res) => {
   res.send(cards);
