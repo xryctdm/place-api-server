@@ -11,9 +11,6 @@ router.get('/users', (req, res) => {
 });
 
 const doesUserExist = (req, res, next) => {
-/*
-eslint no-underscore-dangle: ["error", { "allow": ["_id"] }]
-*/
   const initialUser = users.find((user) => user._id === req.params.id);
   if (!initialUser) {
     res.status(404).send({ message: 'Нет пользователя с таким id' });
