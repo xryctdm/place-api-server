@@ -1,5 +1,5 @@
 {
-  "name": "sprint_12",
+  "name": "place-server",
   "version": "0.0.1",
   "description": "server for place",
   "main": "app.js",
@@ -16,6 +16,7 @@
     "nodemon": "^2.0.2"
   },
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "mongoose": "^5.9.10"
   }
 }
