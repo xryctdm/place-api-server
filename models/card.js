@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-escape */
 /* eslint-disable object-shorthand */
 const mongoose = require('mongoose');
 
@@ -14,7 +15,7 @@ const cardSchema = new mongoose.Schema({
       // eslint-disable-next-line object-shorthand
       // eslint-disable-next-line func-names
       validator: function (v) {
-        return /^http(s?):\/\/(www\.)?(([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3})|([-\w]+(\.\w+))+)(:[0-9]{2,5})?([-/\w]+(#?))$/.test(v);
+        return /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/.test(v);
       },
       // eslint-disable-next-line arrow-parens
       message: props => `${props.value} не является ссылкой!`,
@@ -26,10 +27,10 @@ const cardSchema = new mongoose.Schema({
     ref: 'user',
     required: true,
   },
-  likes: {
+  likes: [{
     type: mongoose.Schema.Types.ObjectId,
     default: [],
-  },
+  }],
   createdAt: {
     type: Date,
     default: Date.now,
