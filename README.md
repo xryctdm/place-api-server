@@ -1,6 +1,6 @@
 # place-server
 
-Сервер для проекта Place на express.js
+Сервер для проекта Place
 
 ## Установка
 
