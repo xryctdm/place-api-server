@@ -11,7 +11,13 @@ const getAllUsers = (req, res, next) => {
 
 const getUserById = (req, res, next) => {
   User.findById(req.params.userId)
-    .then((user) => res.send({ data: user }))
+    .then((user) => {
+      if (!user) {
+        res.status(404).send({ message: 'Пользователь не найден' });
+      } else {
+        res.send({ data: user });
+      }
+    })
     .catch(err => res.status(500).send({ message: 'Произошла ошибка' }));
 };
 
@@ -20,7 +26,7 @@ const createUser = (req, res) => {
 
   User.create({ name, about, avatar })
     .then(user => res.send({ data: user }))
-    .catch((err) => res.status(500).send(err.message));
+    .catch((err) => res.status(500).send({ message: err.message }));
 };
 
 module.exports = {

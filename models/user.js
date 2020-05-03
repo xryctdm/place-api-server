@@ -1,6 +1,7 @@
 /* eslint-disable no-useless-escape */
 /* eslint-disable func-names */
 const mongoose = require('mongoose');
+const validator = require('validator');
 
 const userSchema = new mongoose.Schema({
   name: {
@@ -18,11 +19,8 @@ const userSchema = new mongoose.Schema({
   avatar: {
     type: String,
     validate: {
-      validator(v) {
-        return /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/.test(v);
-      },
-      // eslint-disable-next-line arrow-parens
-      message: props => `${props.value} не является ссылкой!`,
+      validator: (url) => validator.isURL(url),
+      message: 'не является ссылкой!',
     },
     required: true,
   },
