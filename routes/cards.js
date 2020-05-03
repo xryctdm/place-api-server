@@ -1,13 +1,9 @@
 const router = require('express').Router();
-const path = require('path');
 
-const cardsPath = path.resolve('../sprint_12/data/cards.json');
+const { getAllCards, createCard, deleteCard } = require('../controllers/cards');
 
-// eslint-disable-next-line import/no-dynamic-require
-const cards = require(cardsPath);
-
-router.get('/cards', (req, res) => {
-  res.send(cards);
-});
+router.get('/cards', getAllCards);
+router.post('/cards', createCard);
+router.delete('/cards/:cardId', deleteCard);
 
 module.exports = router;
