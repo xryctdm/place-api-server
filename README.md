@@ -28,9 +28,10 @@ npm run dev
 
 | ЗАПРОС                                             | ОТВЕТ              |
 | ---------------------------------------------------| ------------------ |
+| POST localhost:3000/signup                         | создаёт пользователя    |
+| POST localhost:3000/signin                         | аутентификация пользователя    |
 | GET localhost:3000/users                           | возвращает всех пользователей    |
 | GET localhost:3000/users/:userId                   | возвращает пользователя по _id    |
-| POST localhost:3000/users                          | создаёт пользователя    |
 | GET localhost:3000/cards                           | возвращает все карточки |
 | POST localhost:3000/cards                          | создаёт карточку |
 | DELETE localhost:3000/cards/:cardId                | удаляет карточку по идентификатору |
