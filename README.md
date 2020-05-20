@@ -1,6 +1,7 @@
 # place-server
 
 Сервер для проекта Place
+[ссылка на проект](https://https://api.xryctdm-place.gq/)
 
 ## Установка
 
@@ -28,11 +29,11 @@ npm run dev
 
 | ЗАПРОС                                             | ОТВЕТ              |
 | ---------------------------------------------------| ------------------ |
-| POST localhost:3000/signup                         | создаёт пользователя    |
-| POST localhost:3000/signin                         | аутентификация пользователя    |
-| GET localhost:3000/users                           | возвращает всех пользователей    |
-| GET localhost:3000/users/:userId                   | возвращает пользователя по _id    |
-| GET localhost:3000/cards                           | возвращает все карточки |
-| POST localhost:3000/cards                          | создаёт карточку |
-| DELETE localhost:3000/cards/:cardId                | удаляет карточку по идентификатору |
+| POST api.xryctdm-place.gq/signup                         | создаёт пользователя    |
+| POST api.xryctdm-place.gq/signin                         | аутентификация пользователя    |
+| GET api.xryctdm-place.gq/users                           | возвращает всех пользователей    |
+| GET api.xryctdm-place.gq/users/:userId                   | возвращает пользователя по _id    |
+| GET api.xryctdm-place.gq/cards                           | возвращает все карточки |
+| POST api.xryctdm-place.gq/cards                          | создаёт карточку |
+| DELETE api.xryctdm-place.gq/cards/:cardId                | удаляет карточку по идентификатору |
 | Несуществующий адрес                               | { "message": "Запрашиваемый ресурс не найден" }  |
