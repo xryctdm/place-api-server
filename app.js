@@ -1,3 +1,7 @@
+/* eslint-disable import/newline-after-import */
+/* eslint-disable no-console */
+require('dotenv').config();
+
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
@@ -25,6 +29,12 @@ app.use(requestLogger);
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
+
 app.use(routeLogin);
 app.use(auth);
 
@@ -42,6 +52,5 @@ app.use(errors);
 app.use(error);
 
 app.listen(PORT, () => {
-  // eslint-disable-next-line no-console
   console.log(`listening on port ${PORT}`);
 });
