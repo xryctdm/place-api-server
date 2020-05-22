@@ -1,7 +1,7 @@
 # place-server
 
 Сервер для проекта Place
-[ссылка на проект](https://https://api.xryctdm-place.gq/)
+[ссылка на проект](https://api.xryctdm-place.gq/)
 
 ## Установка
 
