@@ -5,7 +5,10 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const { errors } = require('celebrate');
+const { MONGO_URL } = process.env;
+const errors = require('./middlewares/request-err');
+
+
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const routeCards = require('./routes/cards');
@@ -14,15 +17,17 @@ const routeLogin = require('./routes/login');
 const auth = require('./middlewares/auth');
 const error = require('./middlewares/error');
 
-const { PORT = 3000 } = process.env;
+const { PORT } = process.env;
 const app = express();
 
-mongoose.connect('mongodb://localhost:27017/mestodb', {
+mongoose.connect(MONGO_URL, {
   useNewUrlParser: true,
   useCreateIndex: true,
   useFindAndModify: false,
   useUnifiedTopology: true,
-});
+})
+  .catch(() => console.log('не удается подключиться к базе данных'));
+
 
 app.use(requestLogger);
 
@@ -47,7 +52,7 @@ app.use('*', (req, res) => {
   res.status(404).send({ message: 'Запрашиваемый ресурс не найден' });
 });
 
-app.use(errors());
+app.use(errors);
 
 app.use(error);
 
