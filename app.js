@@ -47,7 +47,7 @@ app.use('*', (req, res) => {
   res.status(404).send({ message: 'Запрашиваемый ресурс не найден' });
 });
 
-app.use(errors);
+app.use(errors());
 
 app.use(error);
 

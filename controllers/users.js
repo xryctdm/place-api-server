@@ -5,7 +5,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/user');
 
-const { NODE_ENV, JWT_SECRET } = process.env;
+const { JWT_SECRET } = process.env;
 
 const NotFoundError = require('../errors/not-found-err');
 const BadRequestError = require('../errors/bad-request-err');
@@ -41,7 +41,12 @@ const createUser = (req, res, next) => {
       .then((hash) => User.create({
         name, about, avatar, email, password: hash,
       }))
-      .then((user) => res.send({ data: user }))
+      .then((user) => res.send({
+        name: user.name,
+        about: user.about,
+        avatar: user.avatar,
+        email: user.email,
+      }))
       .catch(next);
   }
 };
@@ -51,14 +56,14 @@ const login = (req, res, next) => {
 
   return User.findUserByCredentials(email, password)
     .then((user) => {
-      const token = jwt.sign({ _id: user._id }, NODE_ENV === 'production' ? JWT_SECRET : 'some-secret', { expiresIn: '7d' });
+      const token = jwt.sign({ _id: user._id }, JWT_SECRET, { expiresIn: '7d' });
       res.cookie('jwt', token, {
         maxAge: 3600000 * 24 * 7,
         httpOnly: true,
       });
       res.send({ token });
     })
-    .catch(() => next(new AuthorizationError('Необходима авторизация')));
+    .catch(() => next(new AuthorizationError('Неверное имя пользователя или пароль')));
 };
 
 module.exports = {
