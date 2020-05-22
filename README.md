@@ -1,12 +1,12 @@
 # place-server
 
 Сервер для проекта Place
-```
-[httpы://api.xryctdm-place.gq]
-```
-```
-[http://84.201.133.77]
-```
+
+* [https://api.xryctdm-place.gq]
+
+
+* [http://84.201.133.77]
+
 
 ## Установка
 
