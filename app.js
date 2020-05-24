@@ -5,9 +5,9 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const { MONGO_URL } = process.env;
 const errors = require('./middlewares/request-err');
 
+const { mongoUrl, port } = require('./config');
 
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
@@ -17,10 +17,9 @@ const routeLogin = require('./routes/login');
 const auth = require('./middlewares/auth');
 const error = require('./middlewares/error');
 
-const { PORT } = process.env;
 const app = express();
 
-mongoose.connect(MONGO_URL, {
+mongoose.connect(mongoUrl, {
   useNewUrlParser: true,
   useCreateIndex: true,
   useFindAndModify: false,
@@ -56,6 +55,6 @@ app.use(errors);
 
 app.use(error);
 
-app.listen(PORT, () => {
-  console.log(`listening on port ${PORT}`);
+app.listen(port, () => {
+  console.log(`listening on port ${port}`);
 });
