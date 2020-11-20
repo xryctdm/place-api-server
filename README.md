@@ -2,10 +2,10 @@
 
 Сервер для проекта Place
 
-* [https://api.xryctdm-place.gq]
+* https://api.xryctdm-place.gq
 
 
-* [http://84.201.133.77]
+* http://178.154.228.94
 
 
 ## Установка
